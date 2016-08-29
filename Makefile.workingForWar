@@ -1,0 +1,17 @@
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=-lncursesw
+SOURCES=main.cpp Umbrella_Class.cpp BattleCards.cpp WarDisplay.cpp display.cpp Game.cpp main_war.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=Casino
+
+all: clean $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) -o $@ $(OBJECTS) $(LDFLAGS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -rf *.o $(EXECUTABLE)
